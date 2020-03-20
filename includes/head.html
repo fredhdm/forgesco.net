@@ -1,0 +1,548 @@
+<meta name="OWNER" content="owner@2t3m.ca"  />
+<meta name="AUTHOR" content="Forgescom"  />
+<meta http-equiv="CONTENT-LANGUAGE" content="French" />
+<meta name="distribution" content="Global"  />
+<meta name="rating" content="General"   />
+<meta name="expires" content="never"  />
+<meta name="ROBOTS" content="index,follow,all" />
+<meta name="location" content="Canada"  />
+<meta name="REVISIT-AFTER" content="monthly"  />
+<meta name="google-site-verification" content="SH9wpRrv9XA62qChoFUr50VgTFEc6UsQTrnN8at4ObM" />
+<?php echo($pageMetaPersonnelles); ?>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+<!--Facebook -->
+<meta property="og:url" content="<?php echo($domaineEnCours . $urlEnCours)?>" />
+<meta property="og:title" content="<?php echo($pageTitre)?>" />
+<meta property="og:description" content="<?php echo($pageMetaDescription)?>" />
+<meta property="og:image" content="<?php echo($domaineEnCours)?><?php echo($og_image_facebook)?>" />
+
+
+<meta property="og:type" content="article" />
+<!--meta property="fb:app_id" content="1147688255270736" /-->
+<!--//Facebook// -->
+
+<link rel="icon" type="image/png" href="/logo-ico.ico" />
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/reset-css.css" type="text/css" />
+<link rel="stylesheet" href="/css/footer-bas.css" type="text/css" />
+<link rel="stylesheet" href="/css/styles.css" type="text/css" />
+<link rel="stylesheet" href="/css/styles-responsive.css" type="text/css" />
+<link rel="stylesheet" href="/css/styles.css" type="text/css" media="print"/>
+<script src="/js/javascript.js" type="text/javascript" charset="utf-8"></script>
+
+<!--Slider-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  
+	
+	//INFOLETTRE
+$("#infolettre #bouton").click(function(){
+	
+	name = $("#infolettre #name").val();
+	email = $("#infolettre #email").val();
+	subscribe = $("#infolettre #subscribe").val();
+	language = $("#infolettre #language").val();
+	
+	// alert('https://hotelnouvellefrance.hemailing.com/administrator/api.php?request=insertsubuser&security_key=Z1k5iIf4LSs6PkH51CYoiGwboLCTRm&name=' + name + '&subscribe=' + subscribe + '&email=' + email + '&extra_fields={"language":"' + language + '"}');
+		
+    $.get('https://hotelnouvellefrance.hemailing.com/administrator/api.php?request=insertsubuser&security_key=Z1k5iIf4LSs6PkH51CYoiGwboLCTRm&name=' + name + '&subscribe=' + subscribe + '&email=' + email + '&extra_fields={"language":"' + language + '"}', function(data){
+        alert(data);
+    });
+});
+	
+	  $("#menu").click(function(){
+        $("nav").toggle(75);
+    });
+		
+		
+		var test;
+		
+		var tempshide;
+			var tempsshow;
+		
+		function hide() {
+		$('.sousmenuhotel').css('display','none');
+		ouverture=0;
+		};
+		
+		function show() {
+		$('.sousmenuhotel').css('display','block');
+		ouverture=1;	
+		};
+		
+		
+		
+		var ouverture=0;
+		$('.over').mouseover(function(e) {		
+		
+			//alert(ouverture);
+			
+			
+			
+			//if(ouverture==0) {
+				//alert('allo');
+				//$('.sousmenuhotel').css('display','block');	 
+				//clearTimeout(tempshide);
+				tempsshow=setTimeout(show,50);		
+					// $('.sousmenuhotel').css('display','block')
+			
+					
+			//}
+ 
+			
+		
+});
+
+
+$('.over').mouseout(function(e) {
+		//if($('.out').not(":hover") ) {
+			//alert('allo');
+			//clearTimeout(tempsshow);
+			tempshide = setTimeout(hide,50);
+			//test().delay(1000);
+			// $('.sousmenuhotel').css('display','none').delay(1000);
+			 //ouverture=0;
+		//}
+	
+
+		
+});
+
+$('.out').mouseover(function(e) {		
+	clearTimeout(tempshide);
+	tempsshow=setTimeout(show,50);
+});
+
+$('.out').mouseout(function(e) {
+	clearTimeout(tempsshow);
+	tempshide=setTimeout(hide,50);
+	
+	
+	//alert(ouverture);
+	//alert(ouverture);
+	 if($('.sm_hotel').not(":hover")){
+					// $('.sousmenuhotel').css('display','none');
+  				//alert('allo');
+			}
+		
+});
+//TRACKING DES ACTIONS DANS LE LOG GOOGLE
+$('*').click(function(event) {
+	console.log($(this).attr('id')); 
+		//$(this).find('*').each(function (index, value) {		
+					//if($(this).attr('id')) {
+								
+					//}
+				//});	
+	
+	
+		
+});
+//NAVIGATION MENU PRINCIPAL MOBILE
+$('nav ul li').click(function(e) {
+		//if($('.out').not(":hover") ) {
+			//alert('allo');
+			//clearTimeout(tempsshow);
+			
+			$(this).each(function(index) {
+        	  $(this).children('.sousmenu').hide();
+    });
+			
+			 $(this).children('.sousmenu').toggle();
+			//test().delay(1000);
+			// $('.sousmenuhotel').css('display','none').delay(1000);
+			 //ouverture=0;
+		//}
+	
+
+		
+});
+
+
+$('#menu_hotel a').each(function(index) {
+        if(this.href.trim() == window.location)
+            $(this).addClass("selected");
+    });
+
+
+	
+	$('header #menu ul li ul li a').each(function(index) {
+	//alert($.trim(this.href));
+	//alert($.trim(window.location));
+        if($.trim(this.href) == window.location)
+           
+			$(this).addClass("selected");
+			
+			//alert($(this));
+    });
+	
+	$( ".selected" ).closest( "li" ).addClass("selected");
+	$( "li.selected" ).closest( "ul" ).closest("li").addClass("selected");
+
+	
+	/* $("div[id*='booking_info']").click(function(){
+		 var html = $(this).children('#bouton').find('a').next('a').attr('href');
+		 
+		 var  phone = (html.indexOf('tel:')+"");
+		 
+		 if(phone>=0) {
+			 	
+			 $(this).children('#bouton').children('span').children('a').css('display','table-cell');
+			 $(this).children('#bouton').children('span').children('a').next('a').hide();
+			 
+			 // $(this).children('#bouton').find('a').next('a').toggle();
+			   //alert(phone);
+			 
+			  
+		 }
+        //$(this).children('.bouton').href
+		
+    });*/
+	
+	
+	
+	//AFFICHER LES NUMÉROS DE TELEPHONE
+	$(".toggleSpan").click(function(){
+				
+		//Si nous sommes en version desktop
+		if($(window).width() > 700) {
+			$(this).removeAttr('href');
+		
+				$(this).find('span').each(function (index, value) {		
+					$(this).toggle();					
+				});	
+		
+				$(this).addClass('noevent');
+		} else {
+			
+		}
+	});		
+		
+   
+		
+	function  adaptMobile () {
+		
+		photoWidth = $( "#bloc_ensemble #bloc_niveau_3 #photo" ).innerWidth();
+		
+		if($(window).width() <= 700) {
+			
+			//HOTEL
+			h1Height = $( "#h1" ).innerHeight();
+			//alert(h1Height);
+			logoHeight = $( ".hotel #menu_hotel #logo" ).innerHeight();
+			paddingSection = h1Height+logoHeight;
+			$('.hotel section').css('padding-top',paddingSection + 'px');
+			$('.hotel #menu_hotel #logo').css('top',-(logoHeight) + 'px');
+			$('.hotel #menu_hotel').css('top',(h1Height+logoHeight-paddingSection) + 'px');
+			$('.hotel #menu_hotel').css('top',(h1Height+logoHeight-paddingSection) + 'px');
+			$('#bloc_ensemble #bloc_niveau_3 #photo').css('height',photoWidth/2);
+			//photos dans le contenu
+			
+			
+			//RETIRER DES CLASSES
+			//pavé
+			//funcRemoveClass($('header').find('.ga_track'),'ga_track');
+			//funcRemoveClass($('#booking_hotel').find('.ga_track'),'ga_track');
+			
+			//forfaits / promotions
+			
+			
+			
+					
+		} else {
+			$('section').css('padding-top',0 + 'px');
+			$('.hotel #menu_hotel #logo').attr( "style", "" );
+			
+			//Photo dans les niveau 3
+			$('#bloc_ensemble #bloc_niveau_3 #photo').css('height',photoWidth/1);
+		}
+	}
+	
+	
+	
+	
+	adaptMobile();
+	
+	
+	//ACTION AUTOMATIQUE AU LOADING DE LA PAGE
+	//FORCER LE TOGGLE POUR LES TELEPHONE
+			if($(window).width() <= 700) {
+				$('#bloc_ensemble').find('.toggleSpan').find('span').each(function (index, value) {		
+					$(this).toggle();							
+					});	
+			}
+			
+		
+	$( window ).resize(function() {
+		adaptMobile();
+	});
+		
+  
+	
+	//PAVÉ FIXE EN HAUT APRES LE DÉROULEMENT	
+	var initialYPave = $('#pave').offset().top;       // get initial position of the element
+	//alert(initialYPave);
+$(window).scroll(function() {                  // assign scroll event listener
+
+    var currentScroll = $(window).scrollTop(); // get current position
+	//alert(pavePosition);
+    if (currentScroll >= initialYPave && $(window).width() >= 700) {           // apply position: fixed if you
+       $('#pave').addClass('fixed');
+    } else {
+			  $('#pave').removeClass('fixed');
+		}
+
+	});
+
+	//PLAN DE MESURE GOOGLE ANALYTICS
+	//TOUS LES BOUTONS APPELER
+	$(".ga_track").click(function(){
+		
+		//$(this).find('a.ga_data').each(function (index, value) { 
+ 	
+	
+		attribut = $(this).attr('title');
+		arrAttribut = attribut.split('/');
+				//alert(attribut);
+			//attributLien = $(this).attr('title');
+			langue = '<?php echo(strtoupper($lng)) ?>';
+	
+		ran = Math.random();
+		 ga('send', 'event', arrAttribut[0], arrAttribut[1], arrAttribut[2]+ ' / Langue : ' + langue  );	 
+	
+		
+	});
+	
+		
+});
+
+
+function funcRemoveClass (path,newclass) {
+	objPath = path;
+	objPath.removeClass(newclass);
+	//alert(newclass);
+}
+
+
+//Hauteur du titre en mobile et placer le logo.
+function showHeight( element, height ) {
+  $( "div" ).text( "The height for the " + element + " is " + height + "px." );
+}
+
+
+
+
+
+
+</script>
+
+<!-- Add jQuery library -->
+
+<!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="/fancybox215/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+<!-- Add fancyBox main JS and CSS files -->
+<script type="text/javascript" src="/fancybox215/source/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="/fancybox215/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+<!-- Add Button helper (this is optional) -->
+<link rel="stylesheet" type="text/css" href="/fancybox215/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+<script type="text/javascript" src="/fancybox215/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+<!-- Add Thumbnail helper (this is optional) -->
+<link rel="stylesheet" type="text/css" href="/fancybox215/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+<script type="text/javascript" src="/fancybox215/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<!-- Add Media helper (this is optional) -->
+<script type="text/javascript" src="/fancybox215/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+			$('.fancybox').fancybox();
+
+			/*
+			 *  Different effects
+			 */
+
+			// Change title type, overlay closing speed
+			$(".fancybox-effects-a").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+
+			// Disable opening and closing animations, change title type
+			$(".fancybox-effects-b").fancybox({
+				openEffect  : 'none',
+				closeEffect	: 'none',
+
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+
+			// Set custom style, close if clicked, change title type and overlay color
+			$(".fancybox-effects-c").fancybox({
+				wrapCSS    : 'fancybox-custom',
+				closeClick : true,
+
+				openEffect : 'none',
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					overlay : {
+						css : {
+							'background' : 'rgba(238,238,238,0.85)'
+						}
+					}
+				}
+			});
+
+			// Remove padding, set opening and closing animations, close if clicked and disable overlay
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+
+				openEffect : 'elastic',
+				openSpeed  : 150,
+
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+
+				closeClick : true,
+
+				helpers : {
+					overlay : null
+				}
+			});
+
+			/*
+			 *  Button helper. Disable animations, hide close button, change title type and content
+			 */
+
+			$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+
+
+			/*
+			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+			 */
+
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+			/*
+			 *  Open manually
+			 */
+
+			$("#fancybox-manual-a").click(function() {
+				$.fancybox.open('1_b.jpg');
+			});
+
+			$("#fancybox-manual-b").click(function() {
+				$.fancybox.open({
+					href : 'iframe.html',
+					type : 'iframe',
+					padding : 5
+				});
+			});
+
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : '1_b.jpg',
+						title : 'My title'
+					}, {
+						href : '2_b.jpg',
+						title : '2nd title'
+					}, {
+						href : '3_b.jpg'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+
+
+		});
+	</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-9226817-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
