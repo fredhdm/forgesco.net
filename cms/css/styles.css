@@ -1,0 +1,583 @@
+
+.erreur {
+
+	font-size:1.3em;
+	text-transform:uppercase;
+	color:red;
+}
+
+ a {	
+
+	text-decoration:none;
+}
+
+label {
+	cursor:pointer;
+}
+
+strong {
+	font-weight:bold;
+}
+
+body {
+	color: #262223;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+	line-height: 1em;
+	background-color: #ffffff;
+	font-weight: 400;
+}
+
+#big_wrapper {
+	width: 100%
+}
+
+
+header {
+	width: 100%;
+	display:table;
+	color:white;
+	font-size:0.8em;
+	line-height:0.9em;
+
+}
+
+header a {	
+	color:white;
+
+}
+
+header li:last-child {
+	
+	border-right:0!important;
+}
+
+header #logo {
+	
+	display:table-cell;
+	width:15%;
+	padding:0 1%;
+	
+}
+
+header #logo img{
+	height:auto;
+	width:100%;
+
+}
+
+header #menu {
+	padding:0 1%;
+	display:table-cell;
+	width:65%;	
+	vertical-align:middle;
+}
+
+header #menu ul {
+	display:table;
+	/* width:100%; */
+	height:auto;
+	position: relative;
+}
+
+header #menu ul li{
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	border-right:1px solid white;
+	padding:0 5px;
+	/* position:relative; */
+	z-index:10;
+	height:auto;
+	cursor: pointer;
+}
+
+header #menu ul li:hover,
+header #menu ul li.selected{
+	background-color: gray;
+	border-radius:5px;
+}
+
+header #menu ul li:hover ul{	
+	display:block;
+}
+
+header #menu ul li ul{
+	display:none;
+	position: absolute;
+	/* top: 0; */
+	min-width:50%;
+	background-color:gray;
+	border-radius: 5px;
+	z-index:100;
+	box-shadow: 2px 2px 5px #888888;
+	min-width:300px;
+	min-height:50px;
+	border: 1px solid rgba(0,0,0,0.5);
+	/* border-left: 1px solid black; */
+	/* width: 100%; */
+}
+
+header #menu ul li:nth-child(n+6) ul{
+	left:inherit;
+	right: 0;
+	min-width:50%;
+	
+	
+}
+
+header #menu ul li ul:before {
+    content: "";
+    display: block;
+    height: 20px;
+    position: absolute;
+    top: -20px;
+    width: 100%;
+}
+
+header #menu ul li ul li{	
+	display:block;
+	text-align:left;
+	border-right:0px solid white;
+
+}
+
+header #menu ul li ul li:hover{	
+	background-color:white;
+
+}
+
+header #menu ul li ul li a{	
+	display:block;
+	width:100%;
+	height:100%;		
+	padding:5px;
+		
+}
+
+header #menu ul li ul li a.parent{	
+	padding-left:10px;
+		
+}
+
+header #menu ul li ul li a.enfant{	
+	padding-left:50px;
+		
+}
+
+header #menu ul li ul li a i{
+	width:15px;
+	visibility: hidden;
+}
+
+header #menu ul li ul li a.haschildren i {
+	visibility: visible;
+}
+
+header #menu ul li ul li a:hover{	
+	color:gray;
+	text-decoration:none;
+}
+
+
+header #login {
+	padding:0 1%;
+	width:20%;
+	display:table-cell;
+	vertical-align:middle;
+	background-color:rgba(255,255,255,0.4)
+	
+}
+
+header #login ul {
+	
+	display:table;
+	width:100%;
+	
+}
+
+header #login ul li{
+	
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	border-right:1px solid white;
+	padding:0 5px;
+}
+
+section {
+	
+	height:100%;	
+	padding:50px 10%;	
+	line-height:normal;
+}
+
+section h1{
+	font-size:2em;
+	text-transform:uppercase;
+	font-weight:700;
+	
+}
+
+section h2{
+	font-size:1.5em;
+	margin-bottom:20px;
+	
+}
+
+section h3{
+	font-size:1.2em;
+	margin-bottom:20px;
+	font-weight:700;
+	text-decoration:underline;
+	
+	
+}
+
+
+section form h4,
+section form h5 {
+	
+	width:100%;
+	height:40px;
+	text-transform:uppercase;
+	color:white;
+	padding:0 20px;
+	
+	display:table;
+	margin:0 0 20px;
+	
+}
+
+
+
+section form h4 span,
+section form h5 span{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+section form h5 span {
+
+}
+
+section form p{
+	text-transform:uppercase;
+	margin-bottom:0;
+}
+
+section form p img.img{
+	width:75%;
+	height:auto;
+	margin-bottom:20px;
+}
+
+section form input,
+section form textarea{
+	width:75%;
+	height:40px;
+	margin-bottom:20px;
+	font-size:1.2em;
+	padding:10px;
+}
+
+section form input.file {
+	border:0;
+}
+
+/*  Pour les champs gÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©s automatiquement par ckEditor  */
+section form div[id*=cke_]{	
+	margin-bottom:20px;
+	width:75%;
+	
+}
+
+section form textarea{
+	
+	height:200px;
+	
+	
+}
+
+section form select{
+	width:50%;
+	height:40px;
+	margin-bottom:20px;
+	font-size:1.2em;
+	padding:10px;
+	
+	
+}
+
+section form span {
+	
+}
+section form span label{
+	
+
+}
+
+section form .radio {
+	width:20px;
+	height: 20px;
+	margin-bottom: 0;
+}
+
+section form #bouton{
+	border:0;
+	text-transform:uppercase;
+	margin-top:30px
+	
+	
+}
+
+section form #bouton.alerte{
+	background-color:red;
+
+	
+	
+}
+
+section form #bouton.bloc{
+	display:block;	
+	text-align:center;
+	
+	
+}
+
+section form p#bouton{
+	width: calc(33% - 10px);
+	display:inline-block;
+	border-radius:5px;
+	color:white;
+	padding:0;
+	margin-right:10px;
+	margin-top:0;
+	margin-bottom: 10px;
+	text-align: center;
+	height: 80px;
+	font-size: 0.8em;
+}
+
+section form p#bouton.bloc{
+	display:block;
+	width:25%;
+	text-align:center;
+}
+
+section form p#bouton a{
+	display:table;
+	width:100%;
+	height:100%;
+	color:white;
+	padding:0;
+}
+
+section form p#bouton a span{
+	padding: 10px;
+	display:table-cell;
+	vertical-align:middle;
+	position:relative;
+}
+
+section form p#bouton a span i{
+	position:relative;
+	left:4px;
+	
+}
+
+
+section #thumbnail_content {
+	display:inline-block;
+	width: 10%;
+	height: 75px;
+	position:relative;
+	z-index:0;
+	margin-bottom:80px;
+	font-size:0;
+	margin-right:1.33%;
+	border:6px solid black;
+	vertical-align: top;
+}
+
+section  div#thumbnail_content:nth-child(4n+4) {
+	margin-right:0!important;
+	
+	
+	
+}
+
+section #thumbnail_content #lien {
+	display:block;
+	width:100%;
+	height:100%;
+	position:absolute;
+	z-index:10;
+	/* background-color: red; */
+}
+
+section #thumbnail_content #lien img {
+	width:100%;
+	height: 100%;
+}
+
+section #thumbnail_content #thumbnail {
+	
+	background-size:cover;
+	background-position:50% 50%;
+	width:100%;
+	height:100%;
+	text-transform:capitalize !important;
+}
+
+section #thumbnail_content #info p {
+	margin-top:10px;
+	font-size:1rem;
+	text-transform:capitalize;
+}
+
+
+
+
+section .arbre #thumbnail_content {
+	display:table;
+	width:100%;
+	height: 50px;
+	margin-bottom:10px;
+	padding-left:20px;
+	margin-right:0%;
+	border:0px solid black !important;
+}
+
+section .arbre #thumbnail_content:first-child {
+	padding-left:0;
+
+	
+}
+
+section   .arbre #thumbnail_content:nth-child(4n+4) {
+	margin-right:0% ;
+	
+	
+	
+}
+
+
+section .arbre #thumbnail_content #thumbnail {
+	
+	display:table-cell;
+	width:50px;
+	height:50px;
+	vertical-align:top;
+	border:1px solid black;
+	
+}
+
+section .arbre #thumbnail_content #info {
+	margin-top:10px;
+	font-size:1rem;
+	text-transform:capitalize;
+	
+	display:table-cell;
+	vertical-align:top;
+	padding-left:10px;
+}
+
+section .arbre #thumbnail_content:first-child #info {
+	
+	padding-left:0;
+}
+
+section .arbre #thumbnail_content #info p {
+	margin-top:0;
+	font-size:0.8rem;
+	
+}
+
+
+
+
+footer {
+	height:150px;
+	font-size:0.8em;
+	line-height:0.9em;
+ width:100%;
+  
+   color:white;
+}
+
+
+
+
+footer a {
+	color:white;	
+}
+
+footer a:hover {
+	text-decoration:underline;
+}
+
+footer #menu {
+	
+	height:100%;
+	display:table;
+	width:100%;
+	position:absolute;
+	top:-25px;
+	
+}
+
+footer #menu ul {
+	display:table-cell;
+	
+	
+	margin:0 auto;
+	height:20%;
+	vertical-align:middle;
+	text-align:center;
+	
+	
+	
+}
+
+footer #menu ul li:last-child {
+	
+	border-right:0px solid white;
+	
+	
+	
+}
+
+footer #menu ul li {
+	display:inline-block;
+	border-right:1px solid white;
+	padding:0 10px;
+	text-align:center;
+	
+	
+}
+
+footer #copyright {
+	background-color:#262223;
+	height:50px;
+	position:absolute;
+	bottom:0;
+	width:100%;
+	text-align:center;	
+}
+
+
+footer #copyright p{
+	display:table;
+	
+	margin:0 auto;
+	height:50px;
+	
+}
+
+footer #copyright a{
+	display:table-cell;
+	vertical-align:middle;
+	
+}
+

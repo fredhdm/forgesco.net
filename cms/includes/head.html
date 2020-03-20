@@ -1,0 +1,144 @@
+<meta charset="UTF-8">
+<meta name="owner" content="owner@2t3m.ca"  />
+<meta name="author" content="<?php echo(sslashesCMS($_SESSION['admClient'])) ?>"  />
+<meta http-equiv="CONTENT-LANGUAGE" content="French" />
+<meta name="distribution" content="Global"  />
+<meta name="rating" content="General"   />
+<meta name="expires" content="never"  />
+<meta NAME="robots" CONTENT="noindex, nofollow">
+<meta name="location" content="Canada"  />
+
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+
+<link rel="icon" type="image/png" href="/logo-ico.ico" />
+			
+			
+		
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="/cms/css/reset-css.css" type="text/css" /> 
+<link rel="stylesheet" href="/cms/css/footer-bas.css" type="text/css" /> 
+<link rel="stylesheet" href="/cms/css/styles.css" type="text/css" /> 
+<link rel="stylesheet" href="/cms/css/footer-bas.css" type="text/css" /> 
+	
+<script src="/js/javascript.js" type="text/javascript" charset="utf-8"></script>     
+<script src="/cms/ckeditor/ckeditor.js"></script>
+<script src="/cms/ckeditor/ckfinder/ckfinder.js"></script>
+<script src="/cms/js/scripts.js"></script>
+
+<style type="text/css">
+header,
+section h4,
+ footer {
+ background-color:<?php echo(sslashesCMS($_SESSION['admCouleur'])) ?>;
+}
+
+header #menu ul li ul{	
+
+	background-color:white;
+	
+	
+}
+
+
+header #menu ul li:hover,
+header #menu ul li.selected{	
+	color:<?php echo(sslashesCMS($_SESSION['admCouleur'])) ?>;
+
+}
+
+
+header #menu ul li ul li:hover,
+header #menu ul li ul li.selected{	
+	background-color:<?php echo(sslashesCMS($_SESSION['admCouleur'])) ?>;
+
+}
+
+header #menu ul li ul li a{	
+	color:<?php echo(sslashesCMS($_SESSION['admCouleur'])) ?>;
+	
+}
+
+header #menu ul li ul li a:hover,
+header #menu ul li ul li a.selected{	
+	color:white;
+	
+}
+
+
+section #thumbnail_content {	
+	border:3px solid <?php echo(sslashesCMS($_SESSION['admCouleur'])) ?>;
+	
+}
+
+
+section form input{
+	border:1px solid <?php echo(sslashesCMS($_SESSION['admCouleur'])) ?>;
+	
+}
+
+section form #bouton{
+	background-color:<?php echo(sslashesCMS($_SESSION['admCouleur'])) ?>;
+	color:white;
+	
+	
+	
+}
+
+
+.couleur_dominante {
+	color:<?php echo(sslashesCMS($_SESSION['admCouleur'])) ?>;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+   
+
+$('header #menu ul li ul li a').each(function(index) {
+	//alert($.trim(this.href));
+	//alert($.trim(window.location));
+        if($.trim(this.href) == window.location)
+           
+			$(this).addClass("selected");
+			
+			//alert($(this));
+    });
+	
+	$( ".selected" ).closest( "li" ).addClass("selected");
+	$( "li.selected" ).closest( "ul" ).closest("li").addClass("selected");
+
+
+		
+		
+
+
+$('header #menu ul li ul li a').each(function(index) {
+	//alert($.trim(this.href));
+	//alert($.trim(window.location));
+        if($(this).hasClass("enfant"))
+           $(this).parent( "li" ).prev('li').children('a').addClass("haschildren");
+			
+			//alert('allo');
+   
+	 });
+	
+	
+	
+	
+
+
+		
+		
+});
+
+
+
+</script>
+
+

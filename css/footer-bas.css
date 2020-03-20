@@ -1,0 +1,37 @@
+
+/* CSSTidy 1.5.2: Wed, 01 Oct 2014 18:28:56 +0000 */
+html {
+	height: 100%
+}
+
+body {
+	height: 100%
+}
+
+#big_wrapper {
+	min-height: 100%;
+	position: relative
+}
+
+#wrapper {
+padding-bottom:328px;
+
+	
+}
+
+footer {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	
+	
+}
+
+
+@media screen and (max-width: 815px) {
+	
+#wrapper {
+padding-bottom:185px;
+	
+}
+}

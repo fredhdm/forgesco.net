@@ -1,0 +1,164 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+
+RewriteBase /
+
+#OBLIGATOIRE
+#RewriteCond %{HTTP_HOST} ^hotelsvieuxquebec.com$
+#RewriteCond %{HTTP_HOST} ^www.hotelsvieuxquebec.com$
+#RewriteRule (.*)$ http://www.hotelsvieuxquebec.com/$1 [R=301,L]
+
+
+#OBLIGATOIRE
+RewriteCond %{HTTPS} off
+# First rewrite to HTTPS:
+# Don't put www. here. If it is already there it will be included, if not
+# the subsequent rule will catch it.
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Now, rewrite any request to the wrong domain to use www.
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+
+
+#OBLIGATOIRE
+#Nouveaux CMS 2014 v2.0
+#Rediriger le root vers le répertoire /fr
+RedirectMatch ^/$ /fr 
+
+#rediriger les sous répertoires vers le vrai site.
+#Accueil
+RewriteRule ^fr$ index.php [L,QSA]
+RewriteRule ^en$ index-en.php [L,QSA]
+
+
+###########CMS
+RewriteRule ^cms/page/(.*)/(.*)/(.*)$ cms/page.php?urlprefereP=$1&parentId=$2&famille=$3&add=1
+RewriteRule ^cms/page/(.*)$ cms/page.php?urlprefereP=$1
+
+RewriteRule ^cms/delete/page/(.*)$ cms/page.php?urlprefereP=$1&delete=1
+RewriteRule ^cms/delete/champs/(.*)/(.*)$ cms/page.php?urlprefereP=$1&champs=$2
+RewriteRule ^cms/delete/image/(.*)/(.*)$ cms/image.php?urlprefereP=$1&image=$2&delete=1
+
+RewriteRule ^cms/image/(.*)/(.*)$ cms/image.php?pageId=$1&imageId=$2
+RewriteRule ^cms/image/(.*)$ cms/image.php?pageId=$1
+
+RewriteRule ^cms/bloc/(.*)/(.*)$ cms/bloc.php?pageId=$1&blocId=$2
+RewriteRule ^cms/bloc/(.*)$ cms/bloc.php?pageId=$1
+
+
+#Pages Forfaits
+RewriteRule ^fr/forfaits/(.*)$ forfaits-niveau-3.php?p2url=forfaits&p3url=$1&famille=4
+RewriteRule ^fr/forfaits$ forfaits.php?p2url=forfaits
+RewriteRule ^en/packages/(.*)$ forfaits-niveau-3-en.php?p2url=packages&p3url=$1&famille=4
+RewriteRule ^en/packages$ forfaits-en.php?p2url=packages
+
+
+#Pages PROMOTIONS
+RewriteRule ^fr/promotions/(.*)$ promotions-niveau-3.php?p2url=promotions&p3url=$1&famille=3
+RewriteRule ^fr/promotions$ promotions.php?p2url=promotions
+RewriteRule ^en/promotions/(.*)$ promotions-niveau-3-en.php?p2url=promotions&p3url=$1&famille=3
+RewriteRule ^en/promotions$ promotions-en.php?p2url=promotions
+
+#Pages AFFAIRES
+RewriteRule ^fr/affaires/(.*)$ affaires-niveau-3.php?p2url=affaires&p3url=$1&famille=3
+RewriteRule ^fr/affaires$ affaires.php?p2url=affaires
+RewriteRule ^en/business/(.*)$ affaires-niveau-3-en.php?p2url=business&p3url=$1&famille=3
+RewriteRule ^en/business$ affaires-en.php?p2url=business
+
+
+#Pages SERVICES
+RewriteRule ^fr/services/(.*)$ services-niveau-3.php?p2url=services&p3url=$1&famille=3
+RewriteRule ^fr/services$ services.php?p2url=services
+RewriteRule ^en/amenities/(.*)$ services-niveau-3-en.php?p2url=amenities&p3url=$1&famille=3
+RewriteRule ^en/amenities$ services-en.php?p2url=amenities
+
+
+#Pages ACTIVITÉS
+RewriteRule ^fr/activites/(.*)$ activites-niveau-3.php?p2url=activites&p3url=$1&famille=4
+RewriteRule ^fr/activites$ activites.php?p2url=activites
+RewriteRule ^en/activities/(.*)$ activites-niveau-3-en.php?p2url=activities&p3url=$1&famille=4
+RewriteRule ^en/activities$ activites-en.php?p2url=activities
+
+#Pages ACCUEIL HOTEL
+RewriteRule ^fr/(.*)/(.*)/(.*)$ index-hotel-niveau-3.php?p2url=$1&p3url=$2&p4url=$3&famille=5&template=hotel
+RewriteRule ^fr/(.*)/(.*)$ index-hotel.php?p2url=$1&p3url=$2&famille=4&template=hotel
+RewriteRule ^fr/(.*)$ index-hotel.php?p2url=$1&famille=4&template=hotel
+RewriteRule ^en/(.*)/(.*)/(.*)$ index-hotel-niveau-3-en.php?p2url=$1&p3url=$2&p4url=$3&famille=5&template=hotel
+RewriteRule ^en/(.*)/(.*)$ index-hotel-en.php?p2url=$1&p3url=$2&famille=4&template=hotel
+RewriteRule ^en/(.*)$ index-hotel-en.php?p2url=$1&famille=4&template=hotel
+
+#Récriture des répertoires (2)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteRule ^fr/([^\.]+)/([^\.]+)$ /$2.php [NC,L]
+RewriteRule ^en/([^\.]+)$ /$1.php [NC,L]
+
+#Récriture des répertoires (1)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteRule ^fr/([^\.]+)$ /$1.php [NC,L]
+RewriteRule ^cms/([^\.]+)$ /cms/$1.php [NC,L]
+
+
+
+#Page d'erreur
+ErrorDocument 404 https://www.forgesco.net
+ 
+
+
+#Chemin du fichier de php.ini pour augmenter la taille d'upload dans le CMS
+#suPHP_ConfigPath /home/u2t3mhe/www/developpement/hurdl/
+	
+</IfModule>
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, Text, XML and fonts
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+
+  # Remove browser bugs (only needed for really old browsers)
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  Header append Vary User-Agent
+</IfModule>
+<IfModule mod_expires.c>
+# Enable expirations
+ExpiresActive On 
+# Default directive
+ExpiresDefault "access plus 1 month"
+# My favicon
+ExpiresByType image/x-icon "access plus 1 year"
+# Images
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+# CSS
+ExpiresByType text/css "access 1 month"
+# Javascript
+ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+<IfModule mod_security.c>  
+   SecFilterScanPOST Off
+</IfModule>
