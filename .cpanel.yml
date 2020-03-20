@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/forgesco/forgesco.net/
+    - /bin/cp -R images $DEPLOYPATH

@@ -1,2 +1,0 @@
-# forgesco.net
-Solution comptable
